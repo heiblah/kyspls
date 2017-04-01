@@ -1,0 +1,101 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication24;
+
+import java.io.*;
+
+import java.util.*;
+
+public class Tests{
+    private String fName;
+    private String laName;
+    private int[] testGrades;
+    private double avgGrade;
+    private char grade;
+   
+   
+    
+   public Tests(){
+       fName = "";
+       laName = "";
+       testGrades = new int[5];
+       avgGrade = 0.0;
+       grade = ' ';
+   }     
+   public Tests(String fName,String laName,int[] testGrades){
+       this.fName = fName;
+       this.laName = laName;
+       this.testGrades = testGrades;
+       avgGrade = 0.0;
+       grade= ' ';
+   }  
+
+   public String getFirstName(){
+       return fName;
+   }
+   public void setFirstName(String fName){
+       this.fName = fName;
+   }
+   public String getLastName(){
+       return laName;
+   }
+   public void setLastName(String laName){
+       this.laName = laName;
+   }
+   public int[] gettestGrades(){
+       return testGrades;
+   }
+   public void settestGrades(int[] testGrades){
+       this.testGrades = testGrades;
+   }
+   
+
+   public void calculateTestAverage(){
+       double sum = 0.0;
+       for(int i = 0; i < 5; i++){
+           sum += testGrades[i];
+       }
+       avgGrade = sum / 5;
+   }
+   public double returnTestAverage(){
+       return avgGrade;
+   }
+  
+   
+   public void GradeCalculation(){
+       if(avgGrade >= 90){
+           grade = 'A';
+       }
+       else if(avgGrade >= 80 && avgGrade < 90){
+           grade = 'B';
+       }
+       else if(avgGrade >= 70 && avgGrade < 80){
+           grade = 'C';
+       }
+       else if(avgGrade >= 60 && avgGrade < 70){
+           grade = 'D';
+       }
+       else{
+           grade = 'F';
+       }
+   }
+   public char returnGrade(){
+       return grade;
+   }
+   
+   public void modifyTestScore(int Pos,int Marks){
+       testGrades[Pos]=Marks;
+   }
+   public String toString(){
+       String Result = "";
+       Result += fName + "\t" + laName + "\t";
+       for(int i = 0; i < 5; i++){
+           Result += testGrades[i] + "\t";
+       }
+       Result += avgGrade + "\t" + grade;
+       return Result;
+   }
+}
